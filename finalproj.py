@@ -3,9 +3,18 @@
 import itertools
 import json
 import sqlite3
+from urllib.request import urlopen
 
-access_token = e02e6ffe7f3f4170b916faeff4f98d19
+access_token = "25880197.9d22fc1.264658484e9142b190635083bfd474aa"
 
+#time, caption length, likes, filter, hashtags, comments, type, location, user tags
+#
+with urlopen('https://api.instagram.com/v1/users/self/media/recent/?access_token=25880197.9d22fc1.264658484e9142b190635083bfd474aa') as response:
+	str_response = response.read().decode('utf-8')
+	obj = json.loads(str_response)
+
+	for ob in obj['data']:
+		print (ob)
 
 CACHE_FNAME = "206_FinalProject_cache.json"
 # Put the rest of your caching setup here:
