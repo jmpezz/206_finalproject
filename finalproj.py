@@ -55,10 +55,10 @@ for info in obj['data']:
 
 
 			#tagged_users.append(user['user']['full_name'])
-	print (tagged_users)
+	#print (tagged_users)
 
-
-
+cur.execute('''INSERT OR IGNORE INTO InstagramDB (date_time, caption_length, likes, tags, comments, type, location, tagged_users) VALUES (?, ?, ?, ?, ?, ?, ?, ?)''', (date_posted, caption_len, likes, hashtags, comments, type_post, location, tagged_users))
+conn.commit()
 
 
 
